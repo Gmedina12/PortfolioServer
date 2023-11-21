@@ -1,6 +1,5 @@
 
 import fs from 'fs'
-import jsonImport from '../../measurementsApi.json' assert { type: 'json' }
 
 
 export const convertUnits = async (args) => {
