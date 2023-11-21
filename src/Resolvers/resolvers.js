@@ -1,11 +1,10 @@
 import axios from "axios";
 import 'dotenv'
 import fs from 'fs'
-// import jsonImport from '../../measurementsApi.json' assert { type: 'json' }
 import { convertUnits, getUnitsByGroups } from "../Mutation/convertUnits.js";
 import {sendConfirmationEmail} from '../Mutation/sendConfirmationEmail.js'
 import {recieveContactEmail} from '../Mutation/recieveContactEmail.js'
-import { error } from "console";
+
 
 const API_KEY = process.env.API_KEY
 
