@@ -1,5 +1,5 @@
 
-import jsonImport from '../../measurementsApi.json' assert { type: 'json' }
+import jsonImport from '../../measurementsApi.json'
 // const measurements = JSON.parse(JSON.stringify(jsonImport)) as Measurement[]
 
 

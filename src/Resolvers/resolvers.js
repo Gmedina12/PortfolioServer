@@ -1,6 +1,6 @@
 import axios from "axios";
 import 'dotenv'
-import jsonImport from '../../measurementsApi.json' assert { type: 'json' }
+import jsonImport from '../../measurementsApi.json'
 import { convertUnits, getUnitsByGroups } from "../Mutation/convertUnits.js";
 import {sendConfirmationEmail} from '../Mutation/sendConfirmationEmail.js'
 import {recieveContactEmail} from '../Mutation/recieveContactEmail.js'
