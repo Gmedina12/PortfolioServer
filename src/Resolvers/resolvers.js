@@ -1,10 +1,9 @@
 import axios from "axios";
 import 'dotenv'
-import fs from 'fs'
+import jsonImport from '../../measurementsApi.json' assert { type: 'json' }
 import { convertUnits, getUnitsByGroups } from "../Mutation/convertUnits.js";
 import {sendConfirmationEmail} from '../Mutation/sendConfirmationEmail.js'
 import {recieveContactEmail} from '../Mutation/recieveContactEmail.js'
-
 
 const API_KEY = process.env.API_KEY
 
@@ -30,7 +29,7 @@ export const resolvers = {
     },
     getAllCurrencies: async () =>{
         try {
-          
+
           const allCurrencies = await axios.get(`https://api.getgeoapi.com/v2/currency/list?api_key=${API_KEY}&format=json`)
           const {data} = allCurrencies
           //[EUR, USD, COP] 
@@ -57,13 +56,6 @@ export const resolvers = {
     getConfirmationMessage: () => confirmationMessage,
     getAllGroups: () => {
         try{
-          let jsonImport
-          fs.readFile('../../measurementsApi.json', 'utf8',(error, data)=>{
-            if(error){
-              return;
-            }
-            jsonImport= JSON.parse(data);
-          })
           const groups = Object.keys(jsonImport)
           return groups;
         }
@@ -93,7 +85,7 @@ export const resolvers = {
           console.log("Error sending email", error);
           throw new Error ('500 - Internal server error: ' + error)
         }
-        
+
       },
       recieveContactEmail: async ( _, {name, sender, subject, message}) => {
         try{
@@ -107,6 +99,3 @@ export const resolvers = {
       },
   }
   }
-
-
-
