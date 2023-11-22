@@ -1,6 +1,7 @@
 import axios from "axios";
 import 'dotenv'
-import jsonImport from '../../measurementsApi.json'
+// import measurementUnits from '../../measurementsApi.json' assert { type: 'json' }
+import {measurementUnits} from '../measurementUnits.js'
 import { convertUnits, getUnitsByGroups } from "../Mutation/convertUnits.js";
 import {sendConfirmationEmail} from '../Mutation/sendConfirmationEmail.js'
 import {recieveContactEmail} from '../Mutation/recieveContactEmail.js'
@@ -56,7 +57,7 @@ export const resolvers = {
     getConfirmationMessage: () => confirmationMessage,
     getAllGroups: () => {
         try{
-          const groups = Object.keys(jsonImport)
+          const groups = Object.keys(measurementUnits)
           return groups;
         }
         catch(error){

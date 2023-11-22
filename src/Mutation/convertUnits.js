@@ -1,16 +1,17 @@
 
-import jsonImport from '../../measurementsApi.json'
-// const measurements = JSON.parse(JSON.stringify(jsonImport)) as Measurement[]
+// import measurementUnits from '../../measurementsApi.json' assert { type: 'json' }
+import {measurementUnits} from '../measurementUnits.js'
+// const measurements = JSON.parse(JSON.stringify(measurementUnits)) as Measurement[]
 
 
 export const convertUnits = async (args) => {
     try {
-        // console.log(jsonImport)}
+        // console.log(measurementUnits)}
         const { group, convertFrom, convertTo, quantity } = args
         if (!group || !convertFrom || !convertTo || !quantity){
             throw new Error('Missing parameters')
         }
-        const toConvert = jsonImport[group].equivalencias[convertFrom][convertTo]
+        const toConvert = measurementUnits[group].equalTo[convertFrom][convertTo]
 
         const unitConverted = toConvert*quantity
 
@@ -25,10 +26,10 @@ export const convertUnits = async (args) => {
 }
 
 export const getUnitsByGroups = async (group) => {
-    const measurementGroup = jsonImport[group];
-    console.log("el Json", measurementGroup)
+    const measurementGroup = measurementUnits[group];
+    console.log("el ex Json", measurementGroup)
     if(measurementGroup){
-      return measurementGroup.unidades
+      return measurementGroup.units
     }
     else{
       throw new Error(`Mesureament group '${group}' not found.`);
