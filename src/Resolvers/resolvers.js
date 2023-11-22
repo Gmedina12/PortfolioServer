@@ -46,7 +46,7 @@ export const resolvers = {
     },
     getUnitsByGroups: async(_, {group}) =>{
       try{
-        const totalUnits = getUnitsByGroups(group)
+        const totalUnits = await getUnitsByGroups(group)
         return totalUnits
       }
       catch(error){
@@ -69,7 +69,7 @@ export const resolvers = {
   Mutation: {
     measurementUnits: async (_, args) => {
         try{
-          const result = convertUnits(args); 
+          const result = await convertUnits(args); 
           return result
         }
         catch(error){
@@ -79,7 +79,7 @@ export const resolvers = {
       },
       sendConfirmationEmail: async ( sender ) => {
         try{
-          const sendMail = sendConfirmationEmail( sender )
+          const sendMail = await sendConfirmationEmail( sender )
           return sendMail
         }
         catch(error){
@@ -90,7 +90,7 @@ export const resolvers = {
       },
       recieveContactEmail: async ( _, {name, sender, subject, message}) => {
         try{
-          const recieveEmail = recieveContactEmail(_, {name, sender, subject, message})
+          const recieveEmail = await recieveContactEmail(_, {name, sender, subject, message})
           return recieveEmail
         }
         catch(error){

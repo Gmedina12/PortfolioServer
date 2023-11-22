@@ -52,10 +52,16 @@ startServer();
 //     - "*"
 //   allow_credentials: true
 // headers:
+//   all:
+//     request:
+//       - propagate:
+//           named: "Authorization"
 //   subgraphs:
-//     portfolio-o1g2b3ms5-gina-paola-medinas-projects:
+//     apollographql-phi:
 //       request:
 //         - propagate:
 //             matching: ".*"
 // include_subgraph_errors:
 //   all: true
+//   subgraphs:
+//     apollographql-phi: false
