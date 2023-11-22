@@ -1,12 +1,11 @@
 
-import measurements from '../../measurementsApi.json' assert { type: 'json' }
+import jsonImport from '../../measurementsApi.json' assert { type: 'json' }
 // const measurements = JSON.parse(JSON.stringify(jsonImport)) as Measurement[]
 
 
 export const convertUnits = async (args) => {
     try {
-        // console.log(jsonImport)
-        const jsonImport = JSON.parse(measurements)
+        // console.log(jsonImport)}
         const { group, convertFrom, convertTo, quantity } = args
         if (!group || !convertFrom || !convertTo || !quantity){
             throw new Error('Missing parameters')
